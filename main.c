@@ -1,9 +1,6 @@
 
-#include "verification.h"
 #include "menu.h"
 #include "go_in.h"
-#include <unistd.h>
-#include <stdio.h>
 #include "string.h"
 
 
@@ -21,15 +18,15 @@ int main() {
    printf("Ingrese su contraseña: \n");
 
      for (int i= 0; i < 5; i++){
-         int p = getch();
+         int p = getch1();
          real[i] = p;
         putchar('*');
      }
 
+    system("clear");
     go_in(password, real);
 
    return 0;
-
 }
 
 

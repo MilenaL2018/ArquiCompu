@@ -6,21 +6,10 @@
 #define ARQUICOMPU_GO_IN_H
 
 #include "menu.h"
-#include <termios.h>
-#include <unistd.h>
+#include "kbhit.h"
+#include "string.h"
 
 
-int getch() {
-    struct termios oldt, newt;
-    int ch;
-    tcgetattr(STDIN_FILENO, &oldt);
-    newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-    ch = getchar();
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-    return ch;
-}
 
 
 void go_in(char password[], char real[]) {
@@ -29,13 +18,13 @@ void go_in(char password[], char real[]) {
 
     if (strcmp(password, real) == 0) {
         printf("Bienvenido al sistema \n");
+        system("clear");
         menu();
     } else {
         while (error < 3 && strcmp (password, again) != 0) {
             printf("\n¡Contraseña incorrecta! Intente de nuevo.\n");
-
             for (int i = 0; i < 5; i++) {
-                caracter = getch();
+                caracter = getch1();
                 if (caracter != 13 && caracter != 8) {
                     again[i] = caracter;
                     putchar('*');
@@ -43,10 +32,10 @@ void go_in(char password[], char real[]) {
                 if(caracter == 13)
                     break;
             }
-
             if(strcmp(password, again) != 0){
                 error++;
             }else {
+                system("clear");
                 printf("Bienvenido al sistema \n");
                 menu();
             }

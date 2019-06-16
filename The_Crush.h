@@ -21,15 +21,10 @@ int dataCrush[]= {
         0x81
 };
 
-void the_Crush_byTable(){
+void the_Crush_byTable(int a){
     for (int  i = 0;  i <= 6; ++ i) {
         output(dataCrush[i]);
-        if (!kbhit())
-            retardo(speed('0'));
-        else{
-            char s = getchar();
-            retardo(speed(s));
-        }
+            retardo(speed(a));
     }
 }
 

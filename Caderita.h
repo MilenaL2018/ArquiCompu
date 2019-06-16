@@ -26,15 +26,11 @@ int datoCaderita[]= {
         0X8F
 };
 
-void Caderita(){
+void Caderita(int a){
     for(int i = 0; i < 16; i++){
         output(datoCaderita[i]);
-        if (!kbhit())
-            retardo(speed('0'));
-        else{
-            char s = getchar();
-            retardo(speed(s));
-        }
+        retardo(speed(a));
+
 
     }
 }

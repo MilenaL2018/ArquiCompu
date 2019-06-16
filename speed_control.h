@@ -6,24 +6,19 @@
 #define ARQUICOMPU_SPEED_CONTROL_H
 
 
-static const int DELAYBAJO = 40;
-
-static const int DELAYMEDIO = 60;
-
-static const int DELAYALTO = 80;
 
 
-int speed(char character){
-    int a = 60;
 
-if (character == 38){
-     a-=20;
-}
-if (character == 40){
-     a+= 20;
-}
+#include <ncurses.h>
 
-return a;
+int speed(int a){
+    int speed = 60;
+    if (a==72)
+        speed-=20;
+    else if (a==80)
+        speed+= 20;
+
+return speed;
 }
 
 

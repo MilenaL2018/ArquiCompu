@@ -14,26 +14,16 @@
 
 
 
-void Fantastic_Car_byAlgorithm() {
+void Fantastic_Car_byAlgorithm(int a) {
     int j;
         for (j = 0; j < 7; j++){
             output(potencia(2, j));
-            if (!kbhit())
-                retardo(speed('0'));
-            else{
-                char s = getchar();
-                retardo(speed(s));
-            }
+                retardo(speed(a));
         }
-    retardo(DELAYMEDIO);
+    retardo(a);
         for (int i = 7; i >= 0; --i) {
             output(potencia(2, i));
-            if (!kbhit())
-                retardo(speed('0'));
-            else{
-                char s = getchar();
-                retardo(speed(s));
-            }
+           retardo(speed(a));
     }
 }
 
@@ -61,15 +51,10 @@ int dataFantasticCar[] = {
 
 
 
-void Fantastic_Car_byTable(){
+void Fantastic_Car_byTable(int a){
     for (int i = 0; i <= 15; i++) {
         output(dataFantasticCar[i]);
-        if (!kbhit())
-            retardo(speed('0'));
-        else{
-            char s = getchar();
-            retardo(speed(s));
-        }
+       retardo(speed(a));
     }
 }
 
