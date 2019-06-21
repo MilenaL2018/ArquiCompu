@@ -5,8 +5,9 @@
 #ifndef ARQUICOMPU_DELAY_H
 #define ARQUICOMPU_DELAY_H
 
-#include "speed_control.h"
-
+#include <ncurses.h>
+#include <termios.h>
+#include <sys/ioctl.h>
 
 void retardo(int a){
     for (int j = 0; j < a; j++) {
@@ -14,6 +15,8 @@ void retardo(int a){
         while (i)i--;
     }
 }
+
+
 
 
 #endif //ARQUICOMPU_DELAY_H

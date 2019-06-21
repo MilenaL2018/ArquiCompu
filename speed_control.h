@@ -9,17 +9,4 @@
 
 
 
-#include <ncurses.h>
-
-int speed(int a){
-    int speed = 60;
-    if (a==72)
-        speed-=20;
-    else if (a==80)
-        speed+= 20;
-
-return speed;
-}
-
-
 #endif //ARQUICOMPU_SPEED_CONTROL_H
