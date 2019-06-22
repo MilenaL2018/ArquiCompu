@@ -12,20 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="970b259e-5624-4f9f-abe4-4c815a5c4287" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EasyPIO.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KBHIT.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caderita.h" beforeDir="false" afterPath="$PROJECT_DIR$/Caderita.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fantastic_Car.h" beforeDir="false" afterPath="$PROJECT_DIR$/Fantastic_Car.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/The_Crush.h" beforeDir="false" afterPath="$PROJECT_DIR$/The_Crush.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delay.h" beforeDir="false" afterPath="$PROJECT_DIR$/delay.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go_in.h" beforeDir="false" afterPath="$PROJECT_DIR$/go_in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kbhit.h" beforeDir="false" afterPath="$PROJECT_DIR$/kbhit.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.h" beforeDir="false" afterPath="$PROJECT_DIR$/output.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speed_control.h" beforeDir="false" afterPath="$PROJECT_DIR$/speed_control.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="209" column="25" lean-forward="true" selection-start-line="209" selection-start-column="25" selection-end-line="209" selection-end-column="25" />
+            <state relative-caret-position="231">
+              <caret line="143" column="10" lean-forward="true" selection-start-line="143" selection-start-column="10" selection-end-line="143" selection-end-column="10" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
               </folding>
@@ -165,6 +154,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,14 +171,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Arquitectura_Computadoras_l" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -246,6 +235,10 @@
       <workItem from="1561031428371" duration="7124000" />
       <workItem from="1561069474783" duration="8201000" />
       <workItem from="1561120535258" duration="1057000" />
+      <workItem from="1561122904795" duration="365000" />
+      <workItem from="1561164467664" duration="597000" />
+      <workItem from="1561216657222" duration="4196000" />
+      <workItem from="1561228911712" duration="3267000" />
     </task>
     <task id="LOCAL-00001" summary="Pantera Rosa, tecla de escape y subir/bajar velocidad">
       <created>1560626962146</created>
@@ -268,11 +261,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560716289040</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se trató de implementar función para regular la velocidad, aun así quedé atrapada en un loop. No registra cuando se presiona la letra Esc.">
+      <created>1561123003608</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561123003608</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93789000" />
+    <option name="totallyTimeSpent" value="102214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -286,7 +286,7 @@
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1374" height="736" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.32045454" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.34166667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5023585" side_tool="true" weight="0.3098485" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -453,8 +453,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="209" column="25" lean-forward="true" selection-start-line="209" selection-start-column="25" selection-end-line="209" selection-end-column="25" />
+        <state relative-caret-position="231">
+          <caret line="143" column="10" lean-forward="true" selection-start-line="143" selection-start-column="10" selection-end-line="143" selection-end-column="10" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
           </folding>

@@ -9,7 +9,7 @@
 
 
 
-int VEL = 60;
+int VEL = 700;
 int MAXVEL = 30;
 int MINVEL = 100;
 
@@ -17,7 +17,7 @@ int MINVEL = 100;
 
 void menu();
 int go_in(char*);
-int delayc(int a);
+void delayc(int);
 void Fantastic_Car_byAlgorithm();
 void the_Crush_byTable();
 void Caderita();
@@ -62,51 +62,82 @@ int go_in(char password[]) {
     endwin();
     return strcmp(password, ingreso);
 }
+//
+//bool speed_control() {
+//    initscr();
+//    noecho();
+//    cbreak();
+//    int c;
+//    keypad(stdscr, TRUE);
+//    nodelay(stdscr, TRUE);
+//    c = getch();
+//    nocbreak();
+//
+//
+//    if (c == 'e'){
+//        echo();
+//        endwin();
+//        return false;
+//    }
+//
+//    if (c == KEY_UP){
+//        if (VEL > MAXVEL){
+//            VEL -= 10;
+//            return true;
+//        }
+//    }else {
+//        if (VEL < MINVEL){
+//            VEL += 10;
+//            return true;
+//        }
+//    }
+//
+//    echo();
+//    endwin();
+//
+//    return true;
+//}
 
-bool speed_control() {
-    initscr();
-    noecho();
-    cbreak();
-    int c;
-    keypad(stdscr, TRUE);
-    nodelay(stdscr, TRUE);
-    c = getch();
-    nocbreak();
 
+void delayc(int v) {
 
-    if (c == 'e'){
+        unsigned char ch1;
+        unsigned char ch2;
+
+        while(v){
+
+            v--;
+
+            noecho();
+            if (kbhit())
+            {
+                ch1 = getch();
+                if(ch1 == 224 || ch1 == 0){
+
+                    ch2 = getch();
+
+                    switch (ch2)
+                    {
+                        case 72:               // Arriba
+                            if(v > MINVEL)
+                                v-=10;
+                            break;
+                        case 80:               // Abajo
+                            if(v < MAXVEL)
+                                v+=10;
+                            break;
+                        default:
+                            break;
+                    }
+                }else if(ch1 == 13){// Enter
+                    return;
+                }
+            }
+        }
         echo();
-        endwin();
-        return false;
-    }
 
-    if (c == KEY_UP){
-        if (VEL > MAXVEL){
-            VEL -= 10;
-            return true;
-        }
-    }else {
-        if (VEL < MINVEL){
-            VEL += 10;
-            return true;
-        }
-    }
-
-    echo();
-    endwin();
-
-    return true;
 }
 
-
-int delayc(int a) {
-    for (int j = 0; j < a; j++) {
-        unsigned int i = 0x4fffff; //raspberry 0x3fffff
-        while (i)i--;
-
-    }
-    return a;
-}
 
 
 void output(unsigned int a){
@@ -151,7 +182,8 @@ void the_Crush_byTable(){
     for (int  i = 0;  i <= 6; ++ i) {
         output(dataCrush[i]);
         //outputLED(dataCrush[i]);
-        delayc(VEL);
+        int v = VEL;
+        delayc(v);
     }
 }
 
@@ -173,58 +205,29 @@ char dataCaderita[]= {
 };
 
 void Caderita() {
-    int c;
     for (int i = 0; i < 16; i++) {
         output(dataCaderita[i]);
-        c = getch();
-        keypad(stdscr, TRUE);
         // outputLED(dataCaderita[i]);
-        noecho();
-        if (kbhit() && c == KEY_UP) {
-            if (VEL <= MAXVEL - 10) {
-                VEL += 10;
-            }
-        }
-        if (kbhit() && c == KEY_DOWN) {
-            if (VEL >= MINVEL + 10) {
-                VEL -= 10;
-            }
-        }
-
-        delayc(VEL);
+        int v = VEL;
+        delayc(v);
 
     }
 }
 
 void Fantastic_Car_byAlgorithm() {
-    char s;
-    noecho();
+    int v = VEL;
     for (char j = 0; j < 7; j++){
         output(potencia(2, j));
         // outputLED(j);
-        if(kbhit()){
-            s = getch();
-            if (s == KEY_UP && VEL <= MAXVEL-10)
-                VEL+= 10;
-            if (s == KEY_DOWN && VEL >= MINVEL-10)
-                VEL-= 10;
-        }
-        delayc(VEL);
+        delayc(v);
     }
-    delayc(VEL);
+    delayc(v-10);
     for (char i = 7; i >= 0; --i) {
         output(potencia(2, i));
         // outputLED(i);
-        if(kbhit()){
-            s = getch();
-            if (s == KEY_UP && VEL <= MAXVEL-10)
-                VEL+= 10;
-            if (s == KEY_DOWN && VEL >= MINVEL-10)
-                VEL-= 10;
-        }
-        delayc(VEL);
+        delayc(v);
     }
-    echo();
+
 }
 
 
@@ -234,7 +237,7 @@ void Fantastic_Car_byAlgorithm() {
 
 void menu() {
     int selection;
-    initscr();
+
 
     do{
 
@@ -250,7 +253,6 @@ void menu() {
 
 
         scanf("%d", &selection);
-        char c = 'a';
 
         switch(selection){
             case 0:
@@ -260,25 +262,13 @@ void menu() {
                 printf("Seleccionaste el Auto Fantástico\n");
                 printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
                 printf("\nPresione e para salir\n");
-                noecho();
-                do{
-                    if(kbhit())
-                        c = getch();
-                    Fantastic_Car_byAlgorithm();
-                }while(c != 'e');
-                echo();
+                Fantastic_Car_byAlgorithm();
                 break;
             case 2:
-                system("clear");
                 printf("Seleccionaste el Choque\n");
                 printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
                 printf("\nPresione e para salir\n");
-                do{
-                    if(kbhit())
-                        c = getch();
-                    the_Crush_byTable();
-
-                }while(c != 'e');
+                the_Crush_byTable();
                 break;
 
             case 3:
@@ -286,11 +276,8 @@ void menu() {
                 printf("Seleccionaste la Caderita\n");
                 printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
                 printf("\nPresione e para salir\n");
-                do{
-                    if(kbhit())
-                        c = getch();
-                    Caderita();
-                }while(c != 'e');
+                Caderita();
+
                 break;
 
             case 4:
@@ -303,7 +290,6 @@ void menu() {
             default:
                 break;
         }
-        endwin();
     }while(selection != 0);
 
 }
