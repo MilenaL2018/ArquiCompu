@@ -1,0 +1,111 @@
+Función retardo
+
+retorno:
+        str     fp, [sp, #-4]!
+        add     fp, sp, #0
+        sub     sp, sp, #12
+        str     r0, [fp, #-8]
+        b       .L2
+.L3:
+        ldr     r3, [fp, #-8]
+        sub     r3, r3, #1
+        str     r3, [fp, #-8]
+.L2:
+        ldr     r3, [fp, #-8]
+        cmp     r3, #0
+        bne     .L3
+        nop
+        mov     r0, r3
+        add     sp, fp, #0
+        ldr     fp, [sp], #4
+        bx      lr
+
+
+Secuencia:
+
+.text
+
+.extern global_speed
+.extern pattern_controls
+.extern output
+.global FantasticCar_ByAlgorithm
+
+FantasticCar_ByAlgorithm:
+     PUSH {R4-R7, LR}
+_newton_init:
+     MOV R4, #0 // forwards counter
+     MOV R5, #0 // backwards counter
+Fantastic_Car_forwards:
+     BL pattern_controls
+     CMP R0, #0 // if pattern_controls
+     BNE _newton_out // return
+     CMP R4, #3
+     MOVLT R6, #0x18 // base
+     MOVGE R6, #0x30 // base
+     MOVLT R7, #0x80 // mark
+     MOVGE R7, #0x8 // mark
+     MOV R0, R4 // r0 = i
+     MOV R1, #3 // % 3
+     BL _modulo
+     LSR R7, R7, R0 // mark >> i % 3
+     ORR R0, R6, R7 // base | (mark >> i % 3)
+     BL output
+     LDR R0, =global_speed
+     LDR R0, [R0]
+     BL delayMillis
+     ADD R4, R4, #1
+     CMP R4, #6
+     BNE Fantastic_Car_forwards
+Fantastic_Car_backwards:
+     BL pattern_controls
+     CMP R0, #0 // if pattern_controls
+     BNE _newton_out // return
+     CMP R5, #3
+     MOVLT R6, #0x30 // base
+     MOVGE R6, #0x18 // base
+     MOVLT R7, #0x1 // mark
+     MOVGE R7, #0x20 // mark
+     MOV R0, R5 // r0 = i
+     MOV R1, #3 // % 3
+     BL _modulo
+     LSL R7, R7, R0 // mark << i % 3
+     ORR R0, R6, R7 // base | (mark >> i % 3)
+     BL output
+     LDR R0, =global_speed
+     LDR R0, [R0]
+     BL delayMillis
+     ADD R5, R5, #1
+     CMP R5, #6
+     BNE _newton_move_backwards
+     B _newton_init
+_newton_out:
+     POP {R4-R7, PC}
+
+.data
+
+
+.end
+
+
+switch case:
+        str     r0, [fp, #-8]
+        ldr     r3, [fp, #-8]
+        cmp     r3, #98
+        beq     .L6
+        ldr     r3, [fp, #-8]
+        cmp     r3, #99
+        beq     .L7
+        ldr     r3, [fp, #-8]
+        cmp     r3, #97
+        b       .L5
+.L6:
+        nop
+        b       .L5
+.L7:
+        nop
+.L5:
+        nop
+        mov     r0, r3
+        add     sp, fp, #0
+        ldr     fp, [sp], #4
+        bx      lr

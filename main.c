@@ -2,14 +2,16 @@
 #include "potencia.h"
 #include <stdio.h>
 #include <ncurses.h>
-//#include "EasyPIO.h"
+#include "EasyPIO.h"
 #include <string.h>
 
 
 
-unsigned int global_speed = 500;
-const unsigned int min_speed_cap = 1000;
-const unsigned int max_speed_cap = 100;
+unsigned int global_speed = 80000000;
+const unsigned int min_speed_cap = 130000000;
+const unsigned int max_speed_cap = 10000000;
+
+const char led[] = {14,15,18,23,25,8,7};
 
 void menu();
 int go_in(char*);
@@ -20,10 +22,14 @@ void Caderita();
 
 
 void delay(int a){
-    for (int j = 0; j < a; j++) {
+    while (a){
+        a--;
+    }
+
+    /* for (int j = 0; j < a; j++) {
         unsigned int i = 0x4fffff; //raspberry 0x3fffff
         while (i)i--;
-    }
+    } */
 }
 
 
@@ -82,7 +88,6 @@ void run(void (*fn)()) {
     printw("Presione 'q' para volver al modo de selección.\n");
     printw("Utilice las flechas arriba/abajo para manejar la velocidad del patrón.\n\n");
 
-    echo();
     fn();
 
     keypad(stdscr, FALSE);
@@ -94,70 +99,47 @@ void run(void (*fn)()) {
 }
 
 int pattern_controls() {
+
     switch (getch()) {
         case 'q':
             return 1;
         case KEY_UP:
-            if (global_speed > max_speed_cap)
-                global_speed -= 100;
+            if (global_speed > max_speed_cap){
+                global_speed -= 10000000;
+                FILE *f = fopen("file.txt", "w");
+                fprintf(f, "Integer: %d \n", global_speed);
+                fclose(f);
+
+            }
             break;
         case KEY_DOWN:
-            if (global_speed < min_speed_cap)
-                global_speed += 100;
+            if (global_speed < min_speed_cap){
+                global_speed += 10000000;
+                FILE *f = fopen("file.txt", "w");
+                fprintf(f, "Integer: %d \n", global_speed);
+                fclose(f);
+            }
+
             break;
     }
     return 0;
 }
-//
-//void delayc(int v) {
-//    cbreak();
-//    noecho();
-//
-//    unsigned char ch1;
-//        unsigned char ch2;
-//
-//        while(v){
-//
-//            v--;
-//
-//             ch1 = getch();
-//                if(ch1 == 224 || ch1 == 0){
-//
-//                    ch2 = getch();
-//
-//                    switch (ch2)
-//                    {
-//                        case 72:               // Arriba
-//                            if(v > MINVEL)
-//                                v-=10;
-//                            break;
-//                        case 80:               // Abajo
-//                            if(v < MAXVEL)
-//                                v+=10;
-//                            break;
-//                        default:
-//                            break;
-//                    }
-//                }else if(ch1 == 13){// Enter
-//                    return;
-//                }
-//            }
-//}
-
 
 
 void output(unsigned int a){
     int i;
     for (i = 7; i >= 0; --i) {
-        if (a%2 == 0) {
+        if (a%2 == 0) { // status 1
             printw("-");
-        }else {
+            digitalWrite(led[i], 1);
+        }else { // status 0
             printw("*");
+            digitalWrite(led[i], 0);
         }
         a = a/2;
     }
     printw("\r");
-    clear();
+    refresh();
 }
 
 char dataCrush[]= {
@@ -171,16 +153,21 @@ char dataCrush[]= {
 };
 
 void the_Crush_byTable(){
-    for (int  i = 0;  i <= 6; ++ i) {
-        if (pattern_controls())
-            return;
-        output(dataCrush[i]);
-        //outputLED(dataCrush[i]);
-//        int v = VEL;
-        delay(global_speed);
+    while (1){
+        for (int  i = 0;  i <= 6; ++ i) {
+            if (pattern_controls())
+                return;
+            output(dataCrush[i]);
+            //outputLED(dataCrush[i]);
+            //        int v = VEL;
+            delay(global_speed);
+
+           // delayMillis(global_speed);
+
+
+        }
     }
 }
-
 char dataCaderita[]= {
         0xF0,
         0XF,
@@ -199,31 +186,36 @@ char dataCaderita[]= {
 };
 
 void Caderita() {
-    for (int i = 0; i < 16; i++) {
-        if (pattern_controls())
-            return;
-        output(dataCaderita[i]);
-        // outputLED(dataCaderita[i]);
-       // int v = VEL;
-        delay(global_speed);
 
+    while (1){
+        for (int i = 0; i < 16; i++) {
+            if (pattern_controls())
+                return;
+            output(dataCaderita[i]);
+            delay(global_speed);
+          //  delayMillis(global_speed);
+        }
     }
+
 }
 
 void Fantastic_Car_byAlgorithm() {
-    if (pattern_controls())
-        return;
-   // int v = VEL;
-    for (char j = 0; j < 7; j++){
-        output(potencia(2, j));
-        // outputLED(j);
-        delay(global_speed);
-    }
-    delay(global_speed-10);
-    for (char i = 7; i >= 0; --i) {
-        output(potencia(2, i));
-        // outputLED(i);
-        delay(global_speed);
+    while (1){
+        if (pattern_controls())
+            return;
+        for (char j = 0; j < 7; j++){
+            output(potencia(2, j));
+            outputLED(j);
+            delay(global_speed);
+            //delayMillis(global_speed);
+        }
+        delay(global_speed-1000000);
+        for (char i = 7; i >= 0; --i) {
+            output(potencia(2, i));
+            outputLED(i);
+            delay(global_speed);
+            //delayMillis(global_speed);
+        }
     }
 
 }
@@ -255,7 +247,7 @@ void menu() {
             case 0:
                 break;
             case 1:
-               run(Fantastic_Car_byAlgorithm);
+                run(Fantastic_Car_byAlgorithm);
                 break;
             case 2:
                 run(the_Crush_byTable);
@@ -281,26 +273,34 @@ void menu() {
 
 int main() {
 
+    pioInit();
+
+    for (int i=0; i<8;i++){
+        pinMode(led[i], OUTPUT);
+    }
+
+
     char password[6];
 
     strcpy(password, "12345");
 
     initscr();
-
-    if(go_in(password) == 0){
+     if(go_in(password) == 0){
+        clear();
         printw("\nBIENVENIDO AL SISTEMA\n");
         menu();
     }else{
+        clear();
         printw("\nCONTRASEÑA INCORRECTA, NOS VIMOS\n");
         return 0;
-    }
+    } 
 
+
+    printw("\nBIENVENIDO AL SISTEMA\n");
+    menu();
     endwin();
 
 
 
     return 0;
 }
-
-
-

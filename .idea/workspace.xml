@@ -12,8 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="970b259e-5624-4f9f-abe4-4c815a5c4287" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assembler" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delay.h" beforeDir="false" afterPath="$PROJECT_DIR$/delay.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
@@ -51,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4187">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="375">
+              <caret line="295" column="6" lean-forward="true" selection-start-line="295" selection-start-column="6" selection-end-line="295" selection-end-column="6" />
               <folding>
                 <element signature="e#1#22#0" expanded="true" />
               </folding>
@@ -61,19 +61,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/delay.h">
+        <entry file="file://$PROJECT_DIR$/assembler">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EasyPIO.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="369">
+              <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -115,6 +106,7 @@
         <option value="$PROJECT_DIR$/EasyPIO.h" />
         <option value="$PROJECT_DIR$/KBHIT.h" />
         <option value="$PROJECT_DIR$/delay.h" />
+        <option value="$PROJECT_DIR$/assembler" />
         <option value="$PROJECT_DIR$/main.c" />
       </list>
     </option>
@@ -217,6 +209,8 @@
       <workItem from="1561216657222" duration="4196000" />
       <workItem from="1561228911712" duration="5081000" />
       <workItem from="1561383539938" duration="2951000" />
+      <workItem from="1561388309332" duration="614000" />
+      <workItem from="1561404402953" duration="4297000" />
     </task>
     <task id="LOCAL-00001" summary="Pantera Rosa, tecla de escape y subir/bajar velocidad">
       <created>1560626962146</created>
@@ -267,11 +261,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561384825599</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Se borró la función delayc y se cambió por pattern_controls">
+      <created>1561388475172</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1561388475174</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106979000" />
+    <option name="totallyTimeSpent" value="111890000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -284,8 +285,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1374" height="736" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.3469697" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.35757574" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5023585" side_tool="true" weight="0.3098485" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -296,7 +298,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294702" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2963576" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.294702" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007576" side_tool="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.35430464" />
       <window_info anchor="bottom" id="CMake" order="11" />
@@ -307,9 +309,9 @@
       <window_info anchor="right" id="Database" order="3" weight="0.32954547" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31653544" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.35833332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" sideWeight="0.5023585" side_tool="true" weight="0.3098485" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32781458" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.35099337" />
@@ -318,11 +320,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294702" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.29946524" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.29537955" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007576" side_tool="true" weight="0.32838285" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.35472372" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.35430464" />
       <window_info anchor="bottom" id="CMake" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3244207" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3228477" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -338,7 +340,8 @@
     <MESSAGE value="Se trató de implementar función para regular la velocidad en el delay. No registra cuando se presiona la letra Esc." />
     <MESSAGE value="Se cambiaron los printf por printw porque hay problemas con ncurses" />
     <MESSAGE value="Se borraron headers innecesarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se borraron headers innecesarios" />
+    <MESSAGE value="Se borró la función delayc y se cambió por pattern_controls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se borró la función delayc y se cambió por pattern_controls" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -364,16 +367,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/verification.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#110#129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/verification.h" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -388,13 +382,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/menu.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/menu.h" />
     <entry file="file:///usr/include/ncurses.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -402,37 +390,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/go_in.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fantastic_Car.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#112#130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kbhit.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/speed_control.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/go_in.h" />
+    <entry file="file://$PROJECT_DIR$/Fantastic_Car.h" />
+    <entry file="file://$PROJECT_DIR$/kbhit.h" />
+    <entry file="file://$PROJECT_DIR$/speed_control.h" />
     <entry file="file://$PROJECT_DIR$/potencia.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -440,23 +401,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/output.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pruebas.c">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/The_Crush.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/output.h" />
+    <entry file="file://$PROJECT_DIR$/pruebas.c" />
+    <entry file="file://$PROJECT_DIR$/The_Crush.h" />
     <entry file="file://$PROJECT_DIR$/KBHIT.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -469,22 +416,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/delay.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="15" />
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EasyPIO.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assembler">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4187">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="375">
+          <caret line="295" column="6" lean-forward="true" selection-start-line="295" selection-start-column="6" selection-end-line="295" selection-end-column="6" />
           <folding>
             <element signature="e#1#22#0" expanded="true" />
           </folding>
