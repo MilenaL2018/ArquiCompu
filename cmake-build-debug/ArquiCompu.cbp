@@ -84,43 +84,16 @@
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/EasyPIO.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/Fantastic_Car.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/KBHIT.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/The_Crush.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/delay.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/go_in.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/kbhit.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/main.c">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/menu.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/output.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/potencia.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/pruebas.c">
-			<Option target="ArquiCompu"/>
-		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/speed_control.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/verification.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/CMakeLists.txt">

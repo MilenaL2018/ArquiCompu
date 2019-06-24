@@ -1,26 +1,31 @@
 
-#include "string.h"
-#include <ncurses.h>
-#include <termios.h>
-#include <sys/ioctl.h>
 #include "potencia.h"
-#include <stdlib.h>
-#include "KBHIT.h"
+#include <stdio.h>
+#include <ncurses.h>
+//#include "EasyPIO.h"
+#include <string.h>
 
 
 
-int VEL = 700;
-int MAXVEL = 30;
-int MINVEL = 100;
-
-
+unsigned int global_speed = 500;
+const unsigned int min_speed_cap = 1000;
+const unsigned int max_speed_cap = 100;
 
 void menu();
 int go_in(char*);
-void delayc(int);
+//void delayc(int);
 void Fantastic_Car_byAlgorithm();
 void the_Crush_byTable();
 void Caderita();
+
+
+void delay(int a){
+    for (int j = 0; j < a; j++) {
+        unsigned int i = 0x4fffff; //raspberry 0x3fffff
+        while (i)i--;
+    }
+}
+
 
 //void outputLED(unsigned char);
 //
@@ -64,44 +69,8 @@ int go_in(char password[]) {
 
     return strcmp(password, ingreso);
 }
-//
-//bool speed_control() {
-//    initscr();
-//    noecho();
-//    cbreak();
-//    int c;
-//    keypad(stdscr, TRUE);
-//    nodelay(stdscr, TRUE);
-//    c = getch();
-//    nocbreak();
-//
-//
-//    if (c == 'e'){
-//        echo();
-//        endwin();
-//        return false;
-//    }
-//
-//    if (c == KEY_UP){
-//        if (VEL > MAXVEL){
-//            VEL -= 10;
-//            return true;
-//        }
-//    }else {
-//        if (VEL < MINVEL){
-//            VEL += 10;
-//            return true;
-//        }
-//    }
-//
-//    echo();
-//    endwin();
-//
-//    return true;
-//}
 
-
-void delayc(int v) {
+void run(void (*fn)()) {
     cbreak();
     noecho();
 
@@ -109,46 +78,71 @@ void delayc(int v) {
     nodelay(stdscr, TRUE);
     curs_set(0);
 
+    clear();
+    printw("Presione 'q' para volver al modo de selección.\n");
+    printw("Utilice las flechas arriba/abajo para manejar la velocidad del patrón.\n\n");
 
-    unsigned char ch1;
-        unsigned char ch2;
+    echo();
+    fn();
 
-        while(v){
-
-            v--;
-
-
-            if (kbhit())
-            {
-                ch1 = getch();
-                if(ch1 == 224 || ch1 == 0){
-
-                    ch2 = getch();
-
-                    switch (ch2)
-                    {
-                        case 72:               // Arriba
-                            if(v > MINVEL)
-                                v-=10;
-                            break;
-                        case 80:               // Abajo
-                            if(v < MAXVEL)
-                                v+=10;
-                            break;
-                        default:
-                            break;
-                    }
-                }else if(ch1 == 13){// Enter
-                    return;
-                }
-            }
-        }
     keypad(stdscr, FALSE);
     nodelay(stdscr, FALSE);
     curs_set(1);
-    echo();
 
+    clear();
+    menu();
 }
+
+int pattern_controls() {
+    switch (getch()) {
+        case 'q':
+            return 1;
+        case KEY_UP:
+            if (global_speed > max_speed_cap)
+                global_speed -= 100;
+            break;
+        case KEY_DOWN:
+            if (global_speed < min_speed_cap)
+                global_speed += 100;
+            break;
+    }
+    return 0;
+}
+//
+//void delayc(int v) {
+//    cbreak();
+//    noecho();
+//
+//    unsigned char ch1;
+//        unsigned char ch2;
+//
+//        while(v){
+//
+//            v--;
+//
+//             ch1 = getch();
+//                if(ch1 == 224 || ch1 == 0){
+//
+//                    ch2 = getch();
+//
+//                    switch (ch2)
+//                    {
+//                        case 72:               // Arriba
+//                            if(v > MINVEL)
+//                                v-=10;
+//                            break;
+//                        case 80:               // Abajo
+//                            if(v < MAXVEL)
+//                                v+=10;
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//                }else if(ch1 == 13){// Enter
+//                    return;
+//                }
+//            }
+//}
 
 
 
@@ -166,20 +160,6 @@ void output(unsigned int a){
     clear();
 }
 
-//void Fantastic_Car_byAlgorithm() {
-//    for (char j = 0; j < 7; j++){
-//        output(potencia(2, j));
-//       // outputLED(j);
-//        delayc(VEL);
-//    }
-//    delayc(VEL);
-//    for (char i = 7; i >= 0; --i) {
-//        output(potencia(2, i));
-//       // outputLED(i);
-//        delayc(VEL);
-//    }
-//}
-
 char dataCrush[]= {
         0x81,
         0x42,
@@ -192,10 +172,12 @@ char dataCrush[]= {
 
 void the_Crush_byTable(){
     for (int  i = 0;  i <= 6; ++ i) {
+        if (pattern_controls())
+            return;
         output(dataCrush[i]);
         //outputLED(dataCrush[i]);
-        int v = VEL;
-        delayc(v);
+//        int v = VEL;
+        delay(global_speed);
     }
 }
 
@@ -218,38 +200,41 @@ char dataCaderita[]= {
 
 void Caderita() {
     for (int i = 0; i < 16; i++) {
+        if (pattern_controls())
+            return;
         output(dataCaderita[i]);
         // outputLED(dataCaderita[i]);
-        int v = VEL;
-        delayc(v);
+       // int v = VEL;
+        delay(global_speed);
 
     }
 }
 
 void Fantastic_Car_byAlgorithm() {
-    int v = VEL;
+    if (pattern_controls())
+        return;
+   // int v = VEL;
     for (char j = 0; j < 7; j++){
         output(potencia(2, j));
         // outputLED(j);
-        delayc(v);
+        delay(global_speed);
     }
-    delayc(v-10);
+    delay(global_speed-10);
     for (char i = 7; i >= 0; --i) {
         output(potencia(2, i));
         // outputLED(i);
-        delayc(v);
+        delay(global_speed);
     }
 
 }
 
 
 
-
-
-
 void menu() {
-    int selection;
+    nocbreak();
+    echo();
 
+    int selection;
 
     do{
 
@@ -262,6 +247,7 @@ void menu() {
         printw("3) La caderita\n");
         printw("4) funcion 2\n");
         printw("0) Salir\n");
+        printw(" \n");
 
         scanw("%d", &selection);
 
@@ -269,40 +255,23 @@ void menu() {
             case 0:
                 break;
             case 1:
-                clear();
-                printw("Seleccionaste el Auto Fantástico\n");
-                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printw("\nPresione e para salir\n");
-                Fantastic_Car_byAlgorithm();
+               run(Fantastic_Car_byAlgorithm);
                 break;
             case 2:
-                clear();
-                printw("Seleccionaste el Choque\n");
-                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printw("\nPresione e para salir\n");
-                the_Crush_byTable();
+                run(the_Crush_byTable);
                 break;
 
             case 3:
-                clear();
-                printw("Seleccionaste la Caderita\n");
-                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printw("\nPresione e para salir\n");
-                Caderita();
+                run(Caderita);
 
                 break;
 
             case 4:
-                system("clear");
-                printw("Seleccionaste Tenis\n");
-                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printw("\nPresione e para salir\n");
 
                 break;
             default:
                 break;
         }
-        refresh();
     }while(selection != 0);
 
 }
@@ -311,17 +280,10 @@ void menu() {
 
 
 int main() {
-    //pioInit();
-//    for (int i=0; i<8;i++){
-//        pinMode(led[i], OUTPUT);
-//    }
 
     char password[6];
 
-
-
     strcpy(password, "12345");
-
 
     initscr();
 

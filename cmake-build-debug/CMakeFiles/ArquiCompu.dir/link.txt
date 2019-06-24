@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/ArquiCompu.dir/main.c.o CMakeFiles/ArquiCompu.dir/pruebas.c.o  -o ArquiCompu 
+/usr/bin/cc -g   CMakeFiles/ArquiCompu.dir/main.c.o  -o ArquiCompu 

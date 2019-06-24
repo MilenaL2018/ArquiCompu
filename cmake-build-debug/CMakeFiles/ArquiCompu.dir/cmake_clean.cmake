@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ArquiCompu.dir/main.c.o"
-  "CMakeFiles/ArquiCompu.dir/pruebas.c.o"
   "ArquiCompu.pdb"
   "ArquiCompu"
 )

@@ -150,33 +150,6 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/ArquiCompu.dir/build.make CMakeFiles/ArquiCompu.dir/main.c.s
 .PHONY : main.c.s
 
-pruebas.o: pruebas.c.o
-
-.PHONY : pruebas.o
-
-# target to build an object file
-pruebas.c.o:
-	$(MAKE) -f CMakeFiles/ArquiCompu.dir/build.make CMakeFiles/ArquiCompu.dir/pruebas.c.o
-.PHONY : pruebas.c.o
-
-pruebas.i: pruebas.c.i
-
-.PHONY : pruebas.i
-
-# target to preprocess a source file
-pruebas.c.i:
-	$(MAKE) -f CMakeFiles/ArquiCompu.dir/build.make CMakeFiles/ArquiCompu.dir/pruebas.c.i
-.PHONY : pruebas.c.i
-
-pruebas.s: pruebas.c.s
-
-.PHONY : pruebas.s
-
-# target to generate assembly for a file
-pruebas.c.s:
-	$(MAKE) -f CMakeFiles/ArquiCompu.dir/build.make CMakeFiles/ArquiCompu.dir/pruebas.c.s
-.PHONY : pruebas.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +162,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... pruebas.o"
-	@echo "... pruebas.i"
-	@echo "... pruebas.s"
 .PHONY : help
 
 
