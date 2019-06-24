@@ -39,9 +39,9 @@ void Caderita();
 
 int go_in(char password[]) {
 
-    initscr();
-    keypad(stdscr, 1);
+    cbreak();
     noecho();
+
     int error = 0;
     char c;
     char ingreso[5];
@@ -55,11 +55,13 @@ int go_in(char password[]) {
         }
         if(strcmp(password, ingreso) != 0){
             error++;
+            clear();
             printw("\n Contraseña Incorrecta, intente de nuevo \n");
         }
+        refresh();
     }while(error < 3 && strcmp(password, ingreso) != 0);
     echo();
-    endwin();
+
     return strcmp(password, ingreso);
 }
 //
@@ -100,15 +102,22 @@ int go_in(char password[]) {
 
 
 void delayc(int v) {
+    cbreak();
+    noecho();
 
-        unsigned char ch1;
+    keypad(stdscr, TRUE);
+    nodelay(stdscr, TRUE);
+    curs_set(0);
+
+
+    unsigned char ch1;
         unsigned char ch2;
 
         while(v){
 
             v--;
 
-            noecho();
+
             if (kbhit())
             {
                 ch1 = getch();
@@ -134,7 +143,10 @@ void delayc(int v) {
                 }
             }
         }
-        echo();
+    keypad(stdscr, FALSE);
+    nodelay(stdscr, FALSE);
+    curs_set(1);
+    echo();
 
 }
 
@@ -144,14 +156,14 @@ void output(unsigned int a){
     int i;
     for (i = 7; i >= 0; --i) {
         if (a%2 == 0) {
-            printf("-");
+            printw("-");
         }else {
-            printf("*");
+            printw("*");
         }
         a = a/2;
     }
-    printf("\r");
-    fflush(stdout);
+    printw("\r");
+    clear();
 }
 
 //void Fantastic_Car_byAlgorithm() {
@@ -241,55 +253,56 @@ void menu() {
 
     do{
 
-        printf("--------------MENU---------------\n");
-        printf("Seleccione una opción: \n");
+        printw("--------------MENU---------------\n");
+        printw("Seleccione una opción: \n");
 
 
-        printf("1) Auto fantástico\n");
-        printf("2) El choque\n");
-        printf("3) La caderita\n");
-        printf("4) funcion 2\n");
-        printf("0) Salir\n");
+        printw("1) Auto fantástico\n");
+        printw("2) El choque\n");
+        printw("3) La caderita\n");
+        printw("4) funcion 2\n");
+        printw("0) Salir\n");
 
-
-        scanf("%d", &selection);
+        scanw("%d", &selection);
 
         switch(selection){
             case 0:
                 break;
             case 1:
-                system("clear");
-                printf("Seleccionaste el Auto Fantástico\n");
-                printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printf("\nPresione e para salir\n");
+                clear();
+                printw("Seleccionaste el Auto Fantástico\n");
+                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
+                printw("\nPresione e para salir\n");
                 Fantastic_Car_byAlgorithm();
                 break;
             case 2:
-                printf("Seleccionaste el Choque\n");
-                printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printf("\nPresione e para salir\n");
+                clear();
+                printw("Seleccionaste el Choque\n");
+                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
+                printw("\nPresione e para salir\n");
                 the_Crush_byTable();
                 break;
 
             case 3:
-                system("clear");
-                printf("Seleccionaste la Caderita\n");
-                printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printf("\nPresione e para salir\n");
+                clear();
+                printw("Seleccionaste la Caderita\n");
+                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
+                printw("\nPresione e para salir\n");
                 Caderita();
 
                 break;
 
             case 4:
                 system("clear");
-                printf("Seleccionaste Tenis\n");
-                printf("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
-                printf("\nPresione e para salir\n");
+                printw("Seleccionaste Tenis\n");
+                printw("Flecha arriba aumenta velocidad, flecha abajo disminuye velocidad\n");
+                printw("\nPresione e para salir\n");
 
                 break;
             default:
                 break;
         }
+        refresh();
     }while(selection != 0);
 
 }
@@ -298,19 +311,31 @@ void menu() {
 
 
 int main() {
+    //pioInit();
+//    for (int i=0; i<8;i++){
+//        pinMode(led[i], OUTPUT);
+//    }
 
     char password[6];
 
+
+
     strcpy(password, "12345");
 
-    if(go_in(password) == 0){
-        printf("\nBIENVENIDO AL SISTEMA\n");
 
+    initscr();
+
+    if(go_in(password) == 0){
+        printw("\nBIENVENIDO AL SISTEMA\n");
         menu();
     }else{
-        printf("\nCONTRASEÑA INCORRECTA, NOS VIMOS\n");
+        printw("\nCONTRASEÑA INCORRECTA, NOS VIMOS\n");
         return 0;
     }
+
+    endwin();
+
+
 
     return 0;
 }
