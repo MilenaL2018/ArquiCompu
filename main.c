@@ -2,16 +2,16 @@
 #include "potencia.h"
 #include <stdio.h>
 #include <ncurses.h>
-#include "EasyPIO.h"
+//#include "EasyPIO.h"
 #include <string.h>
 
 
 
-unsigned int global_speed = 80000000;
-const unsigned int min_speed_cap = 130000000;
-const unsigned int max_speed_cap = 10000000;
+unsigned int velocidad_estandar = 80000000;
+const unsigned int MINVEL = 130000000;
+const unsigned int MAXVEL = 10000000;
 
-const char led[] = {14,15,18,23,25,8,7};
+//const char led[] = {7, 8, 25, 24, 23, 18, 15, 14};
 
 void menu();
 int go_in(char*);
@@ -31,21 +31,6 @@ void delay(int a){
         while (i)i--;
     } */
 }
-
-
-//void outputLED(unsigned char);
-//
-//void outputLED(unsigned char b){
-//    const char led[] = {14,15,18,23,25,8,7};
-//    const char sw[] = {12,16,20,21};
-//    for(int i = 8; i > 0; i--){
-//        if((b&1) == 1){
-//            //prender
-//            digitalWrite(led[i], OUTPUT);
-//        }else digitalWrite(led[i], 0); //apagar
-//        b = b >> 1;
-//    }
-//}
 
 
 int go_in(char password[]) {
@@ -85,8 +70,7 @@ void run(void (*fn)()) {
     curs_set(0);
 
     clear();
-    printw("Presione 'q' para volver al modo de selección.\n");
-    printw("Utilice las flechas arriba/abajo para manejar la velocidad del patrón.\n\n");
+
 
     fn();
 
@@ -98,25 +82,26 @@ void run(void (*fn)()) {
     menu();
 }
 
-int pattern_controls() {
+int controles_secuencia() {
 
     switch (getch()) {
-        case 'q':
+        case KEY_ENTER:
             return 1;
         case KEY_UP:
-            if (global_speed > max_speed_cap){
-                global_speed -= 10000000;
+            if (velocidad_estandar > MAXVEL){
+                velocidad_estandar -= 10000000;
                 FILE *f = fopen("file.txt", "w");
-                fprintf(f, "Integer: %d \n", global_speed);
+                fprintf(f, "Integer: %d \n", velocidad_estandar);
+                fprintf(f, "Integer: %d \n", );
                 fclose(f);
 
             }
             break;
         case KEY_DOWN:
-            if (global_speed < min_speed_cap){
-                global_speed += 10000000;
+            if (velocidad_estandar < MINVEL){
+                velocidad_estandar += 10000000;
                 FILE *f = fopen("file.txt", "w");
-                fprintf(f, "Integer: %d \n", global_speed);
+                fprintf(f, "Integer: %d \n", velocidad_estandar);
                 fclose(f);
             }
 
@@ -131,10 +116,10 @@ void output(unsigned int a){
     for (i = 7; i >= 0; --i) {
         if (a%2 == 0) { // status 1
             printw("-");
-            digitalWrite(led[i], 1);
+           // digitalWrite(led[i], 1);
         }else { // status 0
             printw("*");
-            digitalWrite(led[i], 0);
+           // digitalWrite(led[i], 0);
         }
         a = a/2;
     }
@@ -155,13 +140,10 @@ char dataCrush[]= {
 void the_Crush_byTable(){
     while (1){
         for (int  i = 0;  i <= 6; ++ i) {
-            if (pattern_controls())
+            if (controles_secuencia())
                 return;
             output(dataCrush[i]);
-            //outputLED(dataCrush[i]);
-            //        int v = VEL;
-            delay(global_speed);
-
+            delay(velocidad_estandar);
            // delayMillis(global_speed);
 
 
@@ -189,10 +171,10 @@ void Caderita() {
 
     while (1){
         for (int i = 0; i < 16; i++) {
-            if (pattern_controls())
+            if (controles_secuencia())
                 return;
             output(dataCaderita[i]);
-            delay(global_speed);
+            delay(velocidad_estandar);
           //  delayMillis(global_speed);
         }
     }
@@ -201,25 +183,33 @@ void Caderita() {
 
 void Fantastic_Car_byAlgorithm() {
     while (1){
-        if (pattern_controls())
+        if (controles_secuencia())
             return;
         for (char j = 0; j < 7; j++){
             output(potencia(2, j));
-            outputLED(j);
-            delay(global_speed);
+            delay(velocidad_estandar);
             //delayMillis(global_speed);
         }
-        delay(global_speed-1000000);
+        delay(velocidad_estandar-1000000);
         for (char i = 7; i >= 0; --i) {
             output(potencia(2, i));
-            outputLED(i);
-            delay(global_speed);
+            delay(velocidad_estandar);
             //delayMillis(global_speed);
         }
     }
 
 }
 
+
+unsigned char datosChoque[] = {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81};
+
+
+void choque(){
+    for(int i = 0; i < 8; i++){
+        output(datosChoque[i]);
+        delay(velocidad_estandar);
+    }
+}
 
 
 void menu() {
@@ -243,10 +233,14 @@ void menu() {
 
         scanw("%d", &selection);
 
+
         switch(selection){
             case 0:
                 break;
             case 1:
+                printw("Usted eligió el auto fantástico");
+                printw("Presione 'q' para volver al modo de selección.\n");
+                printw("Utilice las flechas arriba/abajo para manejar la velocidad del patrón.\n\n");
                 run(Fantastic_Car_byAlgorithm);
                 break;
             case 2:
@@ -259,9 +253,11 @@ void menu() {
                 break;
 
             case 4:
+                run(choque);
 
                 break;
             default:
+               // run(PinkCat);
                 break;
         }
     }while(selection != 0);
@@ -273,12 +269,12 @@ void menu() {
 
 int main() {
 
-    pioInit();
-
-    for (int i=0; i<8;i++){
-        pinMode(led[i], OUTPUT);
-    }
-
+//    pioInit();
+//
+//    for (int i=0; i<8;i++){
+//        pinMode(led[i], OUTPUT);
+//    }
+//
 
     char password[6];
 
@@ -293,7 +289,7 @@ int main() {
         clear();
         printw("\nCONTRASEÑA INCORRECTA, NOS VIMOS\n");
         return 0;
-    } 
+    }
 
 
     printw("\nBIENVENIDO AL SISTEMA\n");
