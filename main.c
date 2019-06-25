@@ -92,7 +92,6 @@ int controles_secuencia() {
                 velocidad_estandar -= 10000000;
                 FILE *f = fopen("file.txt", "w");
                 fprintf(f, "Integer: %d \n", velocidad_estandar);
-                fprintf(f, "Integer: %d \n", );
                 fclose(f);
 
             }
