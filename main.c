@@ -11,7 +11,7 @@ unsigned int global_speed = 80000000;
 const unsigned int min_speed_cap = 130000000;
 const unsigned int max_speed_cap = 10000000;
 
-const char led[] = {14,15,18,23,25,8,7};
+const char led[] = {14,15,18,23,24,25,8,7};
 
 void menu();
 int go_in(char*);
@@ -203,14 +203,16 @@ void Caderita() {
 
 char dataPink [] = {0x80, 0x40, 0x40, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x04, 0x04,
                     0x08, 0x10, 0x20};
+int dataPinkRB [] = {7, 8, 8, 8, 7, 7, 8, 25, 24, 23, 18, 18, 18, 23, 24, 25};
 
 void Pink_Panther(){
     global_speed = 80000000;
     while (1){
-        for (int i = 0; i<11; i++){
+        for (int i = 0; i<16; i++){
             if (pattern_controls())
                 return;
             output(dataPink[i]);
+            digitalWrite(dataPinkRB[i], 0);
             delay(global_speed);
         }
     }
