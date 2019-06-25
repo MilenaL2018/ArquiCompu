@@ -36,7 +36,7 @@ _newton_init:
      MOV R4, #0 // forwards counter
      MOV R5, #0 // backwards counter
 Fantastic_Car_forwards:
-     BL pattern_controls
+     BL
      CMP R0, #0 // if pattern_controls
      BNE _newton_out // return
      CMP R4, #3

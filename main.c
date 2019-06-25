@@ -19,6 +19,7 @@ int go_in(char*);
 void Fantastic_Car_byAlgorithm();
 void the_Crush_byTable();
 void Caderita();
+void Pink_Panther();
 
 
 void delay(int a){
@@ -199,6 +200,20 @@ void Caderita() {
 
 }
 
+char dataPink [] = {0x80, 0x40, 0x40, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x04, 0x04,
+                    0x08, 0x10, 0x20};
+
+void Pink_Panther(){
+    while (1){
+        for (int i = 0; i<11; i++){
+            if (pattern_controls())
+                return;
+            output(dataPink[i]);
+            delay(global_speed);
+        }
+    }
+}
+
 void Fantastic_Car_byAlgorithm() {
     while (1){
         if (pattern_controls())
@@ -237,7 +252,7 @@ void menu() {
         printw("1) Auto fantástico\n");
         printw("2) El choque\n");
         printw("3) La caderita\n");
-        printw("4) funcion 2\n");
+        printw("4) Pantera Rosa\n");
         printw("0) Salir\n");
         printw(" \n");
 
@@ -259,7 +274,7 @@ void menu() {
                 break;
 
             case 4:
-
+                run(Pink_Panther);
                 break;
             default:
                 break;
@@ -272,7 +287,6 @@ void menu() {
 
 
 int main() {
-
     pioInit();
 
     for (int i=0; i<8;i++){

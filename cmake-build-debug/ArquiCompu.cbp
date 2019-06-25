@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug"/>
+				<Option working_dir="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug"/>
+				<Option working_dir="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ArquiCompu">
-				<Option output="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/ArquiCompu" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug"/>
+				<Option output="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/ArquiCompu" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -41,15 +41,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 ArquiCompu"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 ArquiCompu"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ArquiCompu/fast">
-				<Option output="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/ArquiCompu" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug"/>
+				<Option output="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/ArquiCompu" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -61,42 +61,42 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 ArquiCompu/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 ArquiCompu/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/milena/CLionProjects/ArquiCompu/cmake-build-debug"/>
+				<Option working_dir="/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/Caderita.h">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/Caderita.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/EasyPIO.h">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/EasyPIO.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/KBHIT.h">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/KBHIT.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/delay.h">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/delay.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/main.c">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/main.c">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/potencia.h">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/potencia.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/CMakeLists.txt">
+		<Unit filename="/home/salvadiaz/CLionProjects/ArquiCompu/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

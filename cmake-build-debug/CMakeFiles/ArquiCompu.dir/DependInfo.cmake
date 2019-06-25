@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/milena/CLionProjects/ArquiCompu/main.c" "/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/ArquiCompu.dir/main.c.o"
+  "/home/salvadiaz/CLionProjects/ArquiCompu/main.c" "/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/ArquiCompu.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

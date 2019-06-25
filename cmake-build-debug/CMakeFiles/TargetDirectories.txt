@@ -1,3 +1,3 @@
-/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/ArquiCompu.dir
-/home/milena/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/ArquiCompu.dir
+/home/salvadiaz/CLionProjects/ArquiCompu/cmake-build-debug/CMakeFiles/edit_cache.dir

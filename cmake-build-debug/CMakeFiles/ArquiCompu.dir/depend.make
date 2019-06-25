@@ -5,5 +5,3 @@ CMakeFiles/ArquiCompu.dir/main.c.o: ../EasyPIO.h
 CMakeFiles/ArquiCompu.dir/main.c.o: ../main.c
 CMakeFiles/ArquiCompu.dir/main.c.o: ../potencia.h
 
-CMakeFiles/ArquiCompu.dir/pruebas.c.o: ../pruebas.c
-
