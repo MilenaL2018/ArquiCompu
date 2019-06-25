@@ -154,6 +154,7 @@ char dataCrush[]= {
 };
 
 void the_Crush_byTable(){
+    global_speed = 80000000;
     while (1){
         for (int  i = 0;  i <= 6; ++ i) {
             if (pattern_controls())
@@ -187,7 +188,7 @@ char dataCaderita[]= {
 };
 
 void Caderita() {
-
+    global_speed = 80000000;
     while (1){
         for (int i = 0; i < 16; i++) {
             if (pattern_controls())
@@ -204,6 +205,7 @@ char dataPink [] = {0x80, 0x40, 0x40, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 
                     0x08, 0x10, 0x20};
 
 void Pink_Panther(){
+    global_speed = 80000000;
     while (1){
         for (int i = 0; i<11; i++){
             if (pattern_controls())
@@ -215,6 +217,7 @@ void Pink_Panther(){
 }
 
 void Fantastic_Car_byAlgorithm() {
+    global_speed = 80000000;
     while (1){
         if (pattern_controls())
             return;
