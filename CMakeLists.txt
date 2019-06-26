@@ -3,4 +3,4 @@ project(ArquiCompu C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(ArquiCompu main.c Caderita.h delay.h potencia.h EasyPIO.h KBHIT.h)
+add_executable(ArquiCompu main.c Caderita.h potencia.h EasyPIO.h KBHIT.h)

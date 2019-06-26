@@ -87,9 +87,6 @@
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/KBHIT.h">
 			<Option target="ArquiCompu"/>
 		</Unit>
-		<Unit filename="/home/milena/CLionProjects/ArquiCompu/delay.h">
-			<Option target="ArquiCompu"/>
-		</Unit>
 		<Unit filename="/home/milena/CLionProjects/ArquiCompu/main.c">
 			<Option target="ArquiCompu"/>
 		</Unit>

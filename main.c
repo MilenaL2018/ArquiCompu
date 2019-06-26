@@ -1,5 +1,6 @@
 
 #include "potencia.h"
+#include "tenis.h"
 #include <stdio.h>
 #include <ncurses.h>
 //#include "EasyPIO.h"
@@ -7,29 +8,27 @@
 
 
 
-unsigned int velocidad_estandar = 80000000;
-const unsigned int MINVEL = 130000000;
-const unsigned int MAXVEL = 10000000;
+const char led[] = {7, 8, 25, 24, 23, 18, 15, 14};
 
-//const char led[] = {7, 8, 25, 24, 23, 18, 15, 14};
+
 
 void menu();
 int go_in(char*);
-//void delayc(int);
 void Fantastic_Car_byAlgorithm();
 void the_Crush_byTable();
 void Caderita();
+void delay(int);
+void output(unsigned int);
+void run(void (*fn)());
+int controles_secuencia();
+
+void Pink_Panther();
 
 
 void delay(int a){
     while (a){
         a--;
     }
-
-    /* for (int j = 0; j < a; j++) {
-        unsigned int i = 0x4fffff; //raspberry 0x3fffff
-        while (i)i--;
-    } */
 }
 
 
@@ -70,6 +69,8 @@ void run(void (*fn)()) {
     curs_set(0);
 
     clear();
+    printw("Presione 'Esc' para volver al modo de selección.\n");
+    printw("Utilice las flechas arriba/abajo para manejar la velocidad del patrón.\n\n");
 
 
     fn();
@@ -83,9 +84,8 @@ void run(void (*fn)()) {
 }
 
 int controles_secuencia() {
-
     switch (getch()) {
-        case KEY_ENTER:
+        case 0x1B:
             return 1;
         case KEY_UP:
             if (velocidad_estandar > MAXVEL){
@@ -106,6 +106,7 @@ int controles_secuencia() {
 
             break;
     }
+
     return 0;
 }
 
@@ -115,10 +116,10 @@ void output(unsigned int a){
     for (i = 7; i >= 0; --i) {
         if (a%2 == 0) { // status 1
             printw("-");
-           // digitalWrite(led[i], 1);
+          //  digitalWrite(led[i], 1);
         }else { // status 0
             printw("*");
-           // digitalWrite(led[i], 0);
+         //   digitalWrite(led[i], 0);
         }
         a = a/2;
     }
@@ -137,18 +138,20 @@ char dataCrush[]= {
 };
 
 void the_Crush_byTable(){
+    printw("Usted eligió el Choque\n");
     while (1){
         for (int  i = 0;  i <= 6; ++ i) {
             if (controles_secuencia())
                 return;
             output(dataCrush[i]);
             delay(velocidad_estandar);
-           // delayMillis(global_speed);
+            //delayMillis(velocidad_estandar);
 
 
         }
     }
 }
+
 char dataCaderita[]= {
         0xF0,
         0XF,
@@ -167,46 +170,54 @@ char dataCaderita[]= {
 };
 
 void Caderita() {
-
+    printw("Usted eligió la Caderita\n");
     while (1){
         for (int i = 0; i < 16; i++) {
             if (controles_secuencia())
                 return;
             output(dataCaderita[i]);
             delay(velocidad_estandar);
-          //  delayMillis(global_speed);
+          //  delayMillis(velocidad_estandar);
         }
     }
 
 }
 
 void Fantastic_Car_byAlgorithm() {
+    printw("Usted eligió el auto Fantástico\n");
     while (1){
         if (controles_secuencia())
             return;
         for (char j = 0; j < 7; j++){
             output(potencia(2, j));
             delay(velocidad_estandar);
-            //delayMillis(global_speed);
+           // delayMillis(velocidad_estandar);
         }
         delay(velocidad_estandar-1000000);
         for (char i = 7; i >= 0; --i) {
             output(potencia(2, i));
             delay(velocidad_estandar);
-            //delayMillis(global_speed);
+           // delayMillis(velocidad_estandar);
         }
     }
 
 }
 
 
-unsigned char datosChoque[] = {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81};
+
+char dataPink [] = {0x80, 0x40, 0x40, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x04, 0x04,
+                    0x08, 0x10, 0x20};
 
 
-void choque(){
-    for(int i = 0; i < 8; i++){
-        output(datosChoque[i]);
-        delay(velocidad_estandar);
+void Pink_Panther(){
+    printw("Usted eligió la Pantera Rosa\n");
+    while (1){
+        for (int i = 0; i<16; i++){
+            if (controles_secuencia())
+                return;
+            output(dataPink[i]);
+            delay(velocidad_estandar);
+        }
     }
 }
 
@@ -226,7 +237,8 @@ void menu() {
         printw("1) Auto fantástico\n");
         printw("2) El choque\n");
         printw("3) La caderita\n");
-        printw("4) funcion 2\n");
+        printw("4) El partido\n");
+        printw("5) La Pantera Rosa\n");
         printw("0) Salir\n");
         printw(" \n");
 
@@ -237,9 +249,7 @@ void menu() {
             case 0:
                 break;
             case 1:
-                printw("Usted eligió el auto fantástico");
-                printw("Presione 'q' para volver al modo de selección.\n");
-                printw("Utilice las flechas arriba/abajo para manejar la velocidad del patrón.\n\n");
+                printw("Usted eligió el auto Fantástico\n");
                 run(Fantastic_Car_byAlgorithm);
                 break;
             case 2:
@@ -248,15 +258,13 @@ void menu() {
 
             case 3:
                 run(Caderita);
-
                 break;
 
             case 4:
-                run(choque);
-
+                run(tenis);
                 break;
-            default:
-               // run(PinkCat);
+            case 5:
+                run(Pink_Panther);
                 break;
         }
     }while(selection != 0);
@@ -273,11 +281,11 @@ int main() {
 //    for (int i=0; i<8;i++){
 //        pinMode(led[i], OUTPUT);
 //    }
-//
+
 
     char password[6];
 
-    strcpy(password, "12345");
+    strcpy(password, "12345");g
 
     initscr();
      if(go_in(password) == 0){
